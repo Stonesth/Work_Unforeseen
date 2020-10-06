@@ -127,3 +127,10 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Ignore the folder Tools part of an other project 
+Tools/
+Jira/
+MyHours/
+Topdesk/
+Properties/
