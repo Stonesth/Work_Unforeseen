@@ -11,7 +11,7 @@ import time
 save_path = dirname(__file__)[ : -15]
 propertiesFolder_path = save_path + "Properties"
 
-test = True # If False, start the clock else if True We are in test mode => not start the clock
+test = False # If False, start the clock else if True We are in test mode => not start the clock
 
 j.epic_link = tools.readProperty(propertiesFolder_path, 'Work_Unforeseen', 'epic_link=')
 j.save_path = tools.readProperty(propertiesFolder_path, 'Work_Unforeseen', 'save_path=')
@@ -55,20 +55,20 @@ j.placeTheTextIntoComment(t.incidentNumber, t.incidentTitle)
 j.addComment() 
 
 # Create folder link to this JIRA
-j.createFolderJira(j.jira)
+j.createFolderJira(j.jira + '/' +  t.incidentNumber)
 j.createFileInto(j.jira, j.jiraTitle, t.incidentNumber + " - " + t.incidentTitle + "\n" + "https://nnbe.topdesk.net/tas/secure/incident?action=lookup&lookup=naam&lookupValue=" + t.incidentTitle + "\n")
 
 # Start MyHours
 if test != True :
+    print ("Update the clock with the ticket")
     m.connectToMyHours()
-    m.enterCredentials()
-    m.modifyTrack(j.jira, j.jira + ' - ' + j.jiraTitle, j.epic_link)
+    m.modifyTrack(j.jira, j.jira + ' - ' + j.jiraTitle + ' - ' +  t.incidentNumber, j.epic_link)
 else :
     print ("We are in test mode - no start new time")
 
 # 
-tools.openFolder(j.save_path + j.jira)
-tools.openFile(j.save_path + j.jira + '/' + j.jira + '_Comment_v001.txt')
+tools.openFolder(j.save_path + j.jira + '/' +  t.incidentNumber)
+tools.openFile(j.save_path + j.jira + '/' +  t.incidentNumber + '/' + j.jira + '_Comment_v001.txt')
 
 # Send mail to Menno Spelbos
 
