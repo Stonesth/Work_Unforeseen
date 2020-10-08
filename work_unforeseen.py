@@ -53,22 +53,23 @@ j.placeTheTextIntoComment(t.incidentNumber, t.incidentTitle)
 
 # # Add the comment
 j.addComment() 
+time.sleep(1)
 
 # Create folder link to this JIRA
-j.createFolderJira(j.jira + '/' +  t.incidentNumber)
-j.createFileInto(j.jira, j.jiraTitle, t.incidentNumber + " - " + t.incidentTitle + "\n" + "https://nnbe.topdesk.net/tas/secure/incident?action=lookup&lookup=naam&lookupValue=" + t.incidentTitle + "\n")
+j.createFolderJira(j.jira + '/' + t.incidentNumber)
+j.createFileInto(j.jira, j.jiraTitle, t.incidentNumber + " - " + t.incidentTitle + "\n" + "https://nnbe.topdesk.net/tas/secure/incident?action=lookup&lookup=naam&lookupValue=" + t.incidentNumber + "\n", j.jira + '/' + t.incidentNumber, j.jira + '_' + t.incidentNumber + "_Comment_v001")
 
 # Start MyHours
 if test != True :
     print ("Update the clock with the ticket")
     m.connectToMyHours()
-    m.modifyTrack(j.jira, j.jira + ' - ' + j.jiraTitle + ' - ' +  t.incidentNumber, j.epic_link)
+    m.modifyTrack(j.jira, j.jira + ' - ' + j.jira + ' - ' + j.jiraTitle + ' - ' +  t.incidentNumber, j.epic_link)
 else :
     print ("We are in test mode - no start new time")
 
 # 
-tools.openFolder(j.save_path + j.jira + '/' +  t.incidentNumber)
-tools.openFile(j.save_path + j.jira + '/' +  t.incidentNumber + '/' + j.jira + '_Comment_v001.txt')
+tools.openFolder(j.save_path + j.jira + '\\' + t.incidentNumber)
+tools.openFile(j.save_path + j.jira + '/' + t.incidentNumber + '/' + j.jira + '_' +  t.incidentNumber + '_Comment_v001.txt')
 
 # Send mail to Menno Spelbos
 
