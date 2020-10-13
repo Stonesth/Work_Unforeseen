@@ -63,7 +63,7 @@ j.createFileInto(j.jira, j.jiraTitle, t.incidentNumber + " - " + t.incidentTitle
 if test != True :
     print ("Update the clock with the ticket")
     m.connectToMyHours()
-    m.modifyTrack(j.jira, j.jira + ' - ' + j.jira + ' - ' + j.jiraTitle + ' - ' +  t.incidentNumber, j.epic_link)
+    m.modifyTrack(j.jira, j.jira + ' - ' + j.jiraTitle + ' - ' +  t.incidentNumber + ' - ' + t.incidentTitle, j.epic_link)
 else :
     print ("We are in test mode - no start new time")
 
