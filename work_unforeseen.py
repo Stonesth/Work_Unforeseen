@@ -8,8 +8,9 @@ import time
 
 
 # -15 for the name of this project Work_Unforeseen
-save_path = dirname(__file__)[ : -15]
-propertiesFolder_path = save_path + "Properties"
+# save_path = dirname(__file__)[ : -15]
+save_path = os.path.dirname(os.path.abspath("__file__"))
+propertiesFolder_path = save_path + "\\"+ "Properties"
 
 test = False # If False, start the clock else if True We are in test mode => not start the clock
 
