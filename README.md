@@ -14,3 +14,6 @@ git clone https://github.com/Stonesth/Topdesk.git
 git clone https://github.com/Stonesth/Jira.git
 
 git clone https://github.com/Stonesth/MyHours.git
+
+# To build the application run this command in the folder of the application code
+python setup.py build
