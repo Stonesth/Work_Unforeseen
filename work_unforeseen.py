@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding:utf-8 -*-
 from Tools import tools_v000 as tools
 from Topdesk import topdesk as t
 from Jira import jira as j
