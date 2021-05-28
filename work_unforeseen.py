@@ -60,7 +60,10 @@ time.sleep(1)
 
 # Create folder link to this JIRA
 j.createFolderJira(j.jira + '/' + t.incidentNumber)
-j.createFileInto(j.jira, j.jiraTitle, t.incidentNumber + " - " + t.incidentTitle + "\n" + "https://nnbe.topdesk.net/tas/secure/incident?action=lookup&lookup=naam&lookupValue=" + t.incidentNumber + "\n", j.jira + '/' + t.incidentNumber, j.jira + '_' + t.incidentNumber + "_Comment_v001")
+if (t.incidentNumber.startswith("I")) :
+    j.createFileInto(j.jira, j.jiraTitle, t.incidentNumber + " - " + t.incidentTitle + "\n" + "https://nnbe.topdesk.net/tas/secure/incident?action=lookup&lookup=naam&lookupValue=" + t.incidentNumber + "\n", j.jira + '/' + t.incidentNumber, j.jira + '_' + t.incidentNumber + "_Comment_v001")
+else :
+    j.createFileInto(j.jira, j.jiraTitle, t.incidentNumber + " - " + t.incidentTitle + "\n" + "https://nnbe.topdesk.net/tas/secure/newchange?action=lookup&lookup=number&lookupValue=" + t.incidentNumber + "\n", j.jira + '/' + t.incidentNumber, j.jira + '_' + t.incidentNumber + "_Comment_v001")
 
 # Start MyHours
 if test != True :
