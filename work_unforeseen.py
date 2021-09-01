@@ -69,6 +69,14 @@ else :
 if test != True :
     print ("Update the clock with the ticket")
     m.connectToMyHours()
+    
+    time.sleep(2)
+    # Click on the current run
+    print ("Click on the current run")                     
+    timeStep1 = tools.driver.find_element_by_xpath('/html/body/div[1]/div/div/track-page/div/div[4]/div/div[2]')
+    timeStep1.click()    
+    time.sleep(2)
+
     m.modifyTrack(j.jira, j.jira + ' - ' + j.jiraTitle + ' - ' +  t.incidentNumber + ' - ' + t.incidentTitle, j.epic_link)
 else :
     print ("We are in test mode - no start new time")
