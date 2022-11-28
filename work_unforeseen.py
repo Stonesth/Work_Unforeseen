@@ -19,8 +19,8 @@ test = False # If False, start the clock else if True We are in test mode => not
 
 j.epic_link = tools.readProperty(propertiesFolder_path, 'Work_Unforeseen', 'epic_link=')
 j.save_path = tools.readProperty(propertiesFolder_path, 'Work_Unforeseen', 'save_path=')
-sn.user_name = tools.readProperty(propertiesFolder_path, 'ServiceNow', 'user_name=')
 sn.incident_change_id = tools.readProperty(propertiesFolder_path, 'ServiceNow', 'incident_change_id=')
+sn.user_name = tools.readProperty(propertiesFolder_path, 'ServiceNow', 'user_name=')
 
 userJira = tools.readProperty(propertiesFolder_path, 'JIRA', 'userJira=')
 passJira = tools.readProperty(propertiesFolder_path, 'JIRA', 'passJira=')
@@ -79,12 +79,14 @@ j.createFileInto(j.jira, j.jiraTitle, j.description_text, j.jira, j.jira + "_Com
 m.connectToMyHours()
 
 # Click on the current run
-print ("Click on the current run")                     
-timeStep1 = tools.driver.find_element_by_xpath('/html/body/div[1]/div/div/track-page/div/div[5]/div/div[2]')
-timeStep1.click()    
-time.sleep(2)
+print ("Click on the current run")     
+# tools.waitLoadingPageByXPATH2(10, '/html/body/div[1]/div/div/track-page/div/div[5]/div/div[2]')                
+# timeStep1 = tools.driver.find_element_by_xpath('/html/body/div[1]/div/div/track-page/div/div[5]/div/div[2]')
+# timeStep1.click()    
+# time.sleep(2)
 
-m.modifyTrack(j.jira, j.jira + ' - ' + j.jiraTitle, j.epic_link)
+# m.modifyTrack(j.jira, j.jira + ' - ' + j.jiraTitle, j.epic_link)
+m.startTrackWithDescription(j.jira, j.jira + ' - ' + j.jiraTitle, j.epic_link)
 
 # 
 tools.openFolder(j.save_path + j.jira)
