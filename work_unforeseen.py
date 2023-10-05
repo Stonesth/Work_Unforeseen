@@ -27,6 +27,7 @@ passJira = tools.readProperty(propertiesFolder_path, 'JIRA', 'passJira=')
 teamName = tools.readProperty(propertiesFolder_path, 'JIRA', 'teamName=')
 reporterName = tools.readProperty(propertiesFolder_path, 'JIRA', 'reporterName=')
 assigneeName = tools.readProperty(propertiesFolder_path, 'JIRA', 'assigneeName=')
+j.sprint = tools.readProperty(propertiesFolder_path, 'Work_Unforeseen', 'sprint=')
 
 # Open Browser
 tools.openBrowserChrome()
