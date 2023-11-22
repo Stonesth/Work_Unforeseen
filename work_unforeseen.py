@@ -8,6 +8,7 @@ from ServiceNow import servicenow as sn
 import os
 from os.path import dirname
 import time
+from selenium.webdriver.common.by import By
 
 
 # -15 for the name of this project Work_Unforeseen
@@ -65,7 +66,7 @@ j.openJira("RUN - " + sn.incident_change_id + " - " + sn.incidentTitle)
 
 # Need to recovered the identifier of the jira
 tools.waitLoadingPageByID("key-val")
-j.jira = tools.driver.find_element_by_id("key-val").get_attribute('data-issue-key').encode('utf-8')
+j.jira = tools.driver.find_element(By.ID, "key-val").get_attribute('data-issue-key').encode('utf-8')
 
 print("JIRA = " + j.jira)
 
@@ -82,7 +83,7 @@ m.connectToMyHours()
 # Click on the current run
 print ("Click on the current run")     
 # tools.waitLoadingPageByXPATH2(10, '/html/body/div[1]/div/div/track-page/div/div[5]/div/div[2]')                
-# timeStep1 = tools.driver.find_element_by_xpath('/html/body/div[1]/div/div/track-page/div/div[5]/div/div[2]')
+# timeStep1 = tools.driver.find_element(By.XPATH, '/html/body/div[1]/div/div/track-page/div/div[5]/div/div[2]')
 # timeStep1.click()    
 # time.sleep(2)
 
