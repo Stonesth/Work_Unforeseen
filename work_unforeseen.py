@@ -66,7 +66,7 @@ j.openJira("RUN - " + sn.incident_change_id + " - " + sn.incidentTitle)
 
 # Need to recovered the identifier of the jira
 tools.waitLoadingPageByID("key-val")
-j.jira = tools.driver.find_element(By.ID, "key-val").get_attribute('data-issue-key').encode('utf-8')
+j.jira = tools.driver.find_element(By.ID, "key-val").get_attribute('data-issue-key').encode('utf-8').decode()
 
 print("JIRA = " + j.jira)
 
