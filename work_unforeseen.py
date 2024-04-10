@@ -24,7 +24,7 @@ sn.incident_change_id = tools.readProperty(propertiesFolder_path, 'ServiceNow', 
 sn.user_name = tools.readProperty(propertiesFolder_path, 'ServiceNow', 'user_name=')
 
 userJira = tools.readProperty(propertiesFolder_path, 'JIRA', 'userJira=')
-passJira = tools.readProperty(propertiesFolder_path, 'JIRA', 'passJira=')
+# passJira = tools.readProperty(propertiesFolder_path, 'JIRA', 'passJira=')
 teamName = tools.readProperty(propertiesFolder_path, 'JIRA', 'teamName=')
 reporterName = tools.readProperty(propertiesFolder_path, 'JIRA', 'reporterName=')
 assigneeName = tools.readProperty(propertiesFolder_path, 'JIRA', 'assigneeName=')
@@ -54,9 +54,13 @@ print("description_text = ", sn.description_text )
 
 # Jira part
 if test != True :
-    j.loginToJira('https://jira.atlassian.insim.biz/login.jsp?nosso', userJira, passJira)
+    tools.driver.get("https://jira.atlassian.insim.biz/browse/TOS-5454")
+    # j.connectToJiraInsim('TOS-5454', userJira)
+    # j.loginToJira('https://jira.atlassian.insim.biz/login.jsp?nosso', userJira, passJira)
 else :
-    j.loginToJira('https://jira-test.atlassian.insim.biz/login.jsp?nosso', userJira, passJira)
+    tools.driver.get("https://jira-test.atlassian.insim.biz/browse/TOS-5454")
+    # j.connectToJiraInsim('TOS-5454', userJira)
+    # j.loginToJira('https://jira-test.atlassian.insim.biz/login.jsp?nosso', userJira, passJira)
     
 # Create a new JIRA
 j.createJira("RUN - " + sn.incident_change_id + " - " + sn.incidentTitle, sn.description_text, sn.incident_change_id, teamName, reporterName, assigneeName)
