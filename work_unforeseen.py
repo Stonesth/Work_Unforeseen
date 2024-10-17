@@ -37,7 +37,7 @@ tools.openBrowserChrome()
 if test != True :
     print ("Start the clock for the ticket")
     m.connectToMyHours()
-    m.enterCredentials()
+    # m.enterCredentials()
     m.startTrack()
 else :
     print ("We are in test mode - no start new time")
